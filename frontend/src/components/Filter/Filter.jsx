@@ -5,14 +5,21 @@ import {
   setTitleFilter,
   selectTitleFilter,
   resetFiltres,
+  setAuthorFilter,
+  selectAuthorFilter
 } from '../../redux/slices/filterSlice'
 import './Filter.css'
 const Filter = () => {
   const dispatch = useDispatch()
   const titleFilter = useSelector(selectTitleFilter)
+  const authorFilter = useSelector(selectAuthorFilter)
 
   const handleTitleFilterChange = (evt) => {
     dispatch(setTitleFilter(evt.target.value))
+  }
+
+  const handleAuthorFilterChange = (evt) => {
+    dispatch(setAuthorFilter(evt.target.value))
   }
 
   const handleResetFiltres = () => {
@@ -28,6 +35,12 @@ const Filter = () => {
             placeholder="filter by title..."
             value={titleFilter}
             onChange={handleTitleFilterChange}
+          />
+           <input
+            type="text"
+            placeholder="filter by author..."
+            value={authorFilter}
+            onChange={handleAuthorFilterChange}
           />
         </div>
         <button type='button' onClick={handleResetFiltres}>Cбросить</button>

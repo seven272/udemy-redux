@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { BsBookmarkStar, BsBookmarkStarFill } from 'react-icons/bs'
-import { selectTitleFilter } from '../../redux/slices/filterSlice'
+import { selectTitleFilter, selectAuthorFilter } from '../../redux/slices/filterSlice'
 
 import {
   deleteBook,
@@ -15,7 +15,11 @@ const BookList = () => {
     return state.books
   })
 
+  
+
   const titleFilter = useSelector(selectTitleFilter)
+
+  const authorFilter = useSelector(selectAuthorFilter)
 
   const handleRemoveBook = (id) => {
     dispatch(deleteBook(id))
@@ -29,7 +33,23 @@ const BookList = () => {
     const matchesTitle = book.title
       .toLowerCase()
       .includes(titleFilter.toLowerCase())
-    return matchesTitle
+
+      const matchesAuthor = book.author
+      .toLowerCase()
+      .includes(authorFilter.toLowerCase())
+      // console.log(matchesTitle)
+      // const result = []
+      // if (matchesTitle === false && matchesAuthor === false) {
+      //   result = [...matchesTitle, ...matchesAuthor]
+      // } else if (matchesTitle === false &&  matchesAuthor === true) {
+      //   result = [...matchesTitle]
+      // } else if (matchesTitle === true &&  matchesAuthor === false) {
+      //   result = [...matchesAuthor]
+      // } 
+      // const result = [...matchesTitle, ...matchesAuthor]
+      // return result
+      // return matchesAuthor
+    return matchesTitle && matchesAuthor
   })
   return (
     <div className="app-block book-list">
