@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux'
 // import { v4 as uuidv4 } from 'uuid'
 
 import createBookWithId from '../../utils/createBookWithId'
-import { addBook } from '../../redux/books/actionCreators'
+import {
+  addBook
+} from '../../redux/slices/booksSlice'
+// import { addBook } from '../../redux/books/actionCreators'
 import booksData from '../../assets/books.json'
 import './BookForm.css'
 
