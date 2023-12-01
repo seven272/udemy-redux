@@ -7,10 +7,7 @@ import {
   selectOnlyFavoriteBooks,
 } from '../../redux/slices/filterSlice'
 
-// import {
-//   deleteBook,
-//   toggleFavorite,
-// } from '../../redux/books/actionCreators'
+
 import {
   deleteBook,
   toggleBook,
@@ -81,6 +78,8 @@ const BookList = () => {
                 <div className="book-info">
                   {inx + 1}. {highLightMatch(book.title, titleFilter)} by{' '}
                   <strong>{highLightMatch(book.author, authorFilter)}</strong>
+                  &nbsp;
+                   ({book.source})
                 </div>
                 <div className="book-actions">
                   <span onClick={() => handleToggleFavorite(book.id)}>
